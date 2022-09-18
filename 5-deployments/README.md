@@ -37,4 +37,5 @@ enable hpa on your cluster
 kubectl rollout history deploy/ng --min=10 --max=15 --cpu-percent=80
 ```
 
+### Statefulset
 
