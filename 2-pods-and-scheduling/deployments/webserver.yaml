@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dev
+  name: webserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dev
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dev
+    spec:
+      containers:
+      - image: nginx:1.23.2
+        name: nginx
+        env:
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: credentials
+              key: mysql_user
+        - name: MYSQL_PASS
+          value: "mysqlAdmin"
+        resources: {}
+status: {}

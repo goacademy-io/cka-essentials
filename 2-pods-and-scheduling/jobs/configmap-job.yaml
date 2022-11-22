@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: say-hello
+spec:
+  template:
+    spec:
+      containers:
+        - name: say-hello
+          image: busybox
+          command: ["/bin/sh",  "-c", "sleep 600; ./config/hello.sh"]
+          volumeMounts:
+            - mountPath: "/config"
+              name: config
+      restartPolicy: Never
+      volumes:
+        - name: config
+          configMap:
+            name: hello
+  backoffLimit: 4
