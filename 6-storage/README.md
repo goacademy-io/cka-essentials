@@ -1,7 +1,7 @@
 ### Storage Class 
 
 ```yaml
-apiVersion: 4-storage.k8s.io/v1
+apiVersion: 6-storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: local
